@@ -7,6 +7,7 @@ import { retrieveDailyValues } from '../actions/api_actions/bitCoin';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import _ from 'lodash';
+import { statement } from '@babel/template';
 
 const FORMAT_DATE_FORMAT = 'YYYY-MM-DD';
 
@@ -22,6 +23,11 @@ class Home extends Component {
 
     componentDidMount = () => {
         this.retrieveBitcoinValues();
+    }
+
+    componentDidUpdate = () => {
+        const t = this.props.bitcoin.reduce((b, c) => ((b[b.findIndex(d => d.el === c)] || b[b.push({ el: c, count: 0 }) - 1]).count++ , b), []);
+        console.info("test::: ", t)
     }
 
     retrieveBitcoinValues = () => {
@@ -60,7 +66,7 @@ class Home extends Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        bitcoin: !_.isEmpty(state.dailyValues) ? state.dailyValues : []
+        bitcoin: !_.isEmpty(state.bitcoin) && !_.isEmpty(state.bitcoin.dailyValues) ? state.bitcoin.dailyValues : []
     }
 }
 
