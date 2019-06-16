@@ -7,7 +7,6 @@ import { retrieveDailyValues } from '../actions/api_actions/bitCoin';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import _ from 'lodash';
-import { statement } from '@babel/template';
 
 const FORMAT_DATE_FORMAT = 'YYYY-MM-DD';
 

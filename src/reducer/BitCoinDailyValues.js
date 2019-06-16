@@ -1,6 +1,5 @@
 import * as BitCoinActions from '../actions/api_actions/bitCoin';
 import _ from 'lodash';
-// import { REHYDRATE } from 'redux-persist/lib/constants';
 
 const initialState = {};
 
@@ -33,6 +32,7 @@ export const reducer = (state, action) => {
     }
 }
 
+/// check if value is a prime number
 export const checkIfValueIsPrime = (value) => {
     let isPrime = true;
     for (let i = 2; i <= Math.sqrt(value); i++) {
@@ -44,9 +44,11 @@ export const checkIfValueIsPrime = (value) => {
     return isPrime && (value > 1);
 }
 
+/// retrieve derived bitcoin values
 export const derivePrimeNumbers = (bitCoinValues) => {
     if (!_.isEmpty(bitCoinValues))
         return bitCoinValues = Object.keys(bitCoinValues).map(key => {
-            return { date: key, value: bitCoinValues[key], isPrime: checkIfValueIsPrime(4) };
+            const bitCoinValue = bitCoinValues[key];
+            return { date: key, value: bitCoinValue, isPrime: checkIfValueIsPrime(bitCoinValue) };
         });
 }
