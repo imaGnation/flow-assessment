@@ -36,7 +36,7 @@ export const reducer = (state, action) => {
 export const checkIfValueIsPrime = (value) => {
     let isPrime = true;
     for (let i = 2; i <= Math.sqrt(value); i++) {
-        if (Math.floor(value) % i == 0) {
+        if (Math.floor(value) % i === 0) {
             isPrime = false;
             break;
         }

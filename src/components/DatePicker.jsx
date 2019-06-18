@@ -7,7 +7,7 @@ class DatePicker extends Component {
     render = () => {
 
         const minDate = () => {
-            return this.props.isEndDate ? moment(this.props.startDate) : moment().add('M', -6); // derive end date minDate
+            return this.props.isEndDate ? moment(this.props.startDate) : moment().add(-6, 'M'); // derive end date minDate
         }
 
         const maxDate = () => {

@@ -16,7 +16,7 @@ class Home extends Component {
         super(props, state);
 
         this.state = {
-            startDate: moment().add('M', -6),
+            startDate: moment().add(-6, 'M'),
             endDate: moment()
         }
     }
@@ -26,8 +26,9 @@ class Home extends Component {
     }
 
     componentDidUpdate = () => {
-        const t = this.props.bitcoin.reduce((b, c) => ((b[b.findIndex(d => d.el === c)] || b[b.push({ el: c, count: 0 }) - 1]).count++ , b), []);
-        console.info("test::: ", t)
+        // todo: check for duplicate values
+        //const t = this.props.bitcoin.reduce((b, c) => ((b[b.findIndex(d => d.el === c)] || b[b.push({ el: c, count: 0 }) - 1]).count++ , b), []);
+
     }
 
     retrieveBitcoinValues = () => {
