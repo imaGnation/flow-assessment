@@ -4,6 +4,7 @@ import DatePicker from '../components/DatePicker';
 import Button from '@material-ui/core/Button';
 import moment from 'moment';
 import { retrieveDailyValues } from '../actions/api_actions/bitCoin';
+import BitcoinValues from './BitcoinValues';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import _ from 'lodash';
@@ -55,10 +56,11 @@ class Home extends Component {
                 <img src={logo} className="App-logo" alt="logo" />
             </header>
             <div>
-                <DatePicker label="Start Date" value={this.state.startDate} onDateChange={(value) => this.onStardDateChange(value)} />
-                <DatePicker label="End Date" startDate={this.state.startDate} value={this.state.endDate} isEndDate={true} onDateChange={(value) => this.onEndDateChange(value)} />
-                <Button onClick={this.retrieveDailyValues.bind(this)}>Filter</Button>
+                <DatePicker label="Start Date" value={this.state.startDate} onDateChange={(value) => this.onStardDateChange(value)} id="dtPickerStartDate" />
+                <DatePicker label="End Date" startDate={this.state.startDate} value={this.state.endDate} isEndDate={true} onDateChange={(value) => this.onEndDateChange(value)} id="dtPickerEndDate" />
+                <Button onClick={this.retrieveDailyValues.bind(this)} id="btnFilterDates" className="Filter-button">Filter</Button>
             </div>
+            <BitcoinValues bitcoinValues={this.props.bitcoin} />
         </div>);
     }
 }

@@ -1,8 +1,11 @@
-$app-color: #986D20;
+$app-color: #986d20;
+$white-color: #ffffff;
+$black-color: #000000;
+$app-brown-color: #61451a;
 
 .App {
   text-align: center;
-  background-color :$app-color;
+  background-color: $app-color;
   min-height: 100vh;
 }
 
@@ -13,21 +16,53 @@ $app-color: #986D20;
 }
 
 .App-header {
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: $white-color;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-.Period-Container{
+.Period-container {
   padding: 5px !important;
+}
+
+.Bitcoin-values-card {
+  width: 55%;
+  margin: auto;
+  height: 67vmin;
+}
+
+.Bitcoin-values-card-header {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+}
+
+.Bitcoin-values-item-headers {
+  font-weight: 600 !important;
+}
+
+.Bitcoin-values-card-content {
+  height: 90%;
+  overflow: auto;
+}
+
+.Filter-button {
+  padding: 10px;
+  margin-top: 20px !important;
+  background-color: $app-brown-color !important;
+}
+
+.Bitcoin-values-container {
+  display: flex;
+  text-align: left;
+}
+
+.Bitcoin-values-container-header {
+  display: flex;
+  text-align: left;
+  margin: 10px 0;
 }
 
 @keyframes App-logo-spin {

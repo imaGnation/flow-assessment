@@ -36,7 +36,7 @@ export const reducer = (state, action) => {
 export const checkIfValueIsPrime = (value) => {
     let isPrime = true;
     for (let i = 2; i <= Math.sqrt(value); i++) {
-        if (value % i == 0) {
+        if (Math.floor(value) % i == 0) {
             isPrime = false;
             break;
         }
@@ -48,7 +48,11 @@ export const checkIfValueIsPrime = (value) => {
 export const derivePrimeNumbers = (bitCoinValues) => {
     if (!_.isEmpty(bitCoinValues))
         return bitCoinValues = Object.keys(bitCoinValues).map(key => {
-            const bitCoinValue = bitCoinValues[key];
-            return { date: key, value: bitCoinValue, isPrime: checkIfValueIsPrime(bitCoinValue) };
+
+            const tempValue = Math.round(bitCoinValues[key] * 100) / 100; // round off to two decimal places
+            const isPrime = checkIfValueIsPrime(tempValue) // derive isPrime value
+            const bitCoinValue = isPrime ? Math.floor(tempValue) : tempValue; // derive bitcoin value
+
+            return { date: key, value: bitCoinValue, isPrime: isPrime }; // return new object with isPrime flag
         });
 }

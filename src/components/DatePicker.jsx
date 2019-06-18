@@ -17,11 +17,12 @@ class DatePicker extends Component {
         return (
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
+                    id={this.props.id}
                     label={this.props.label}
                     value={this.props.value}
                     minDate={minDate()}
                     maxDate={maxDate()}
-                    className="Period-Container"
+                    className="Period-container"
                     onChange={(value) => this.props.onDateChange(value)} />
             </MuiPickersUtilsProvider>
         );
